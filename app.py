@@ -17,9 +17,9 @@ def fetch(entries):
     num_days=int(info[2])
     display=main.search(age,pincodes,num_days)
     for detail in display:
-        s=f"Pincode: {detail['pincode']} \n Available on: {detail['given_date']} \n {detail['center_name']} \n {detail['block_name']} \n Price:  {detail['fee_type']} \n Availablity :  {detail['Availablity']}\ns"
+        s=f"Pincode: {detail['pincode']} \n Available on: {detail['given_date']} \n {detail['center_name']} \n {detail['block_name']} \n Price:  {detail['fee_type']} \n Availability :  {detail['availability']}\n"
         if detail['Vaccine']!='':
-            s+=f"\n Vaccine Type: {detail['Vaccine']}"
+            s+=f"Vaccine Type: {detail['Vaccine']}\n"
         text_area.insert(tk.INSERT,s)
     text_area.config(state='disabled')
 

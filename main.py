@@ -17,6 +17,7 @@ def search(age,pincodes,num_days):
 
     while True:
         counter = 0   
+        details=list()
 
         for pincode in pincodes:   
             for given_date in actual_dates:
@@ -25,7 +26,7 @@ def search(age,pincodes,num_days):
                 header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'} 
                 
                 result = requests.get(URL, headers=header)
-                details=list()
+                
                 if result.ok:
                     response_json = result.json()
                     if response_json["centers"]:
@@ -33,17 +34,17 @@ def search(age,pincodes,num_days):
                             for center in response_json["centers"]:
                                 for session in center["sessions"]:
                                     if (session["min_age_limit"] <= age and session["available_capacity"] > 0 ) :
-                                        detail_keys=['pincode','given_date','center_name','block_name','fee_type','Availability','Vaccine']
+                                        detail_keys=['pincode','given_date','center_name','block_name','fee_type','availability','Vaccine']
                                         detail = dict.fromkeys(detail_keys,None)
                                         detail['pincode']=pincode
                                         detail['given_date']=given_date
                                         detail["center_name"]=center["name"]
                                         detail['block_name']=center["block_name"]
                                         detail['fee_type']=center["fee_type"]
-                                        detail["Availablity"]=session["available_capacity"]
+                                        detail["availability"]=session["available_capacity"]
                                         detail["Vaccine"]=session["vaccine"]
-                                        counter = counter + 1
                                         details.append(detail)
+                                        counter = counter + 1
                 else:
                     print("No Response!")
                     
@@ -53,4 +54,4 @@ def search(age,pincodes,num_days):
             print("No Vaccine slots available.")
         
         return details
-# search(20,['700054'],3)
+# print(search(18,['700019'],3))
