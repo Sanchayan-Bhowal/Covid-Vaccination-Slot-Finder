@@ -1,5 +1,4 @@
 import requests
-from pygame import mixer 
 from datetime import datetime, timedelta
 import time
 
@@ -51,9 +50,6 @@ while True:
     if counter:
         print("Search Completed!!\nGo to: https://selfregistration.cowin.gov.in/ to book your slots.\nHappy Vaccination!!")
     else:
-        mixer.init()
-        #clmixer.music.load('sound/dingdong.wav')
-        #mixer.music.play()
         print("No Vaccine slots available.")
 
     dt = datetime.now() + timedelta(minutes=3)
