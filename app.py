@@ -1,12 +1,17 @@
 import tkinter as tk
+import main
 
-fields = 'Age', 'Pin-code'
+fields = 'Age', 'Pin-code' , 'Number of Days'
 
 def fetch(entries):
+    info=list()
     for entry in entries:
-        field = entry[0]
-        text  = entry[1].get()
-        print('%s: "%s"' % (field, text)) 
+        info.append(entry[1].get())
+    age=int(info[0])
+    pincodes=list()
+    pincodes.append(info[1])
+    num_days=int(info[2])
+    main.search(age,pincodes,num_days)
 
 def makeform(root, fields):
     entries = []
