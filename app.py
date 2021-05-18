@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter.constants import NORMAL
 import tkinter.scrolledtext as st
 import main
 
@@ -16,12 +17,19 @@ def fetch(entries):
     pincodes.append(info[1])
     num_days=int(info[2])
     display=main.search(age,pincodes,num_days)
-    for detail in display:
-        s=f"Pincode: {detail['pincode']} \n Available on: {detail['given_date']} \n {detail['center_name']} \n {detail['block_name']} \n Price:  {detail['fee_type']} \n Availability :  {detail['availability']}\n"
-        if detail['Vaccine']!='':
-            s+=f"Vaccine Type: {detail['Vaccine']}\n"
+    text_area.config(state='normal')
+    if len(display)>0:
+        text_area.delete("1.0",tk.END)
+        for detail in display:
+            s=f"Pincode: {detail['pincode']} \n Available on: {detail['given_date']} \n {detail['center_name']} \n {detail['block_name']} \n Price:  {detail['fee_type']} \n Availability :  {detail['availability']}\n"
+            if detail['Vaccine']!='':
+                s+=f"Vaccine Type: {detail['Vaccine']}\n"
+            text_area.insert(tk.INSERT,s)
+    else:
+        s="No Vaccine slots available."
         text_area.insert(tk.INSERT,s)
     text_area.config(state='disabled')
+    
 
 def makeform(root, fields):
     entries = []

@@ -48,10 +48,10 @@ def search(age,pincodes,num_days):
                 else:
                     print("No Response!")
                     
-        if counter:
-            print("Search Completed!!\nGo to: https://selfregistration.cowin.gov.in/ to book your slots.\nHappy Vaccination!!")
-        else:
-            print("No Vaccine slots available.")
+        # if counter:
+        #     print("Search Completed!!\nGo to: https://selfregistration.cowin.gov.in/ to book your slots.\nHappy Vaccination!!")
+        # else:
+        #     print("No Vaccine slots available.")
         
         return details
 # print(search(18,['700019'],3))
