@@ -28,6 +28,7 @@ def fetch(entries):
                     s+=f"Vaccine Type: {detail['Vaccine']}\n"
                 text_area.insert(tk.INSERT,s)
         else:
+            text_area.delete("1.0",tk.END)
             s="No Vaccine slots available."
             text_area.insert(tk.INSERT,s)
         text_area.config(state='disabled')
@@ -56,8 +57,8 @@ if __name__ == '__main__':
     b1 = tk.Button(button_frame, text='Show',command=(lambda e=ents: fetch(e)))
     b2 = tk.Button(button_frame, text='Quit', command=root.quit)
     button_frame.pack(side=tk.LEFT, fill=tk.X, padx=5, pady=5)
-    b1.pack(side=tk.RIGHT, padx=5, pady=5)
-    b2.pack(side=tk.RIGHT, padx=5, pady=5)
+    b1.pack(side=tk.LEFT, padx=5, pady=5)
+    b2.pack(side=tk.LEFT, padx=5, pady=5)
     text_frame = tk.Frame(root)
     text_area = st.ScrolledText(text_frame,wrap = tk.WORD,width = 40,height = 10,font = ("Times New Roman",15))
     text_frame.pack(side=tk.BOTTOM,fill=tk.X, padx=5, pady=5)
